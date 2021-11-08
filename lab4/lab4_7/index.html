@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Number</title>
+    <style>
+        #suggest{
+            text-align: center;
+            display: block;
+            font-weight: bold;
+            font-size: 22px;
+        }
+        .btn{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            margin: 2%;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+            outline: none;
+        }
+
+        .btn:hover{
+            color: #fff;
+            background: #2E87EE;
+            box-shadow: 0px 15px 20px rgba(46, 98, 229, 0.4);
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <span id="suggest"></span>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // tạo ra list 64 phần tử (1->64)
+    const listNum = [];
+    for (let i = 0; i < 64; i++){
+        listNum[i] = i+1;
+    }
+    // random vi tri cac phan tu trong mang
+    function shuffle(array) {
+        var i = array.length,
+            j = 0,
+            temp;
+        while (i--) {
+            j = Math.floor(Math.random() * (i+1));
+            // swap randomly chosen element with current element
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
+
+    var ranNums = shuffle(listNum); // random cac phần tử trong mảng 64 phần tử
+
+    // tạo ra các button với id, class, value
+    var btnNum = 64;
+    var count = 1;
+    var pageButtons = $('#container');
+    for (var i = 0; i < btnNum; i++) {
+        const button = document.createElement("button");
+        var number = ranNums[i];
+        button.innerText = number;
+        button.id = 'button' + number;
+        button.className = 'btn';
+        button.value = number;
+        document.getElementById('suggest').innerHTML = 'Find: ' + count;
+	// add onclick event
+        button.addEventListener("click", function (){
+            if ((button.value) == count){
+                button.style.visibility = 'hidden';
+                count++;
+                document.getElementById('suggest').innerHTML = 'Find: ' + count;
+            }else{
+                alert('Không phải  "' + button.value + '"  mà là  "' + count + '"   :>' )
+            }
+        })
+        pageButtons.append(button);// add btns vào container
+    }
+
+
+</script>
+</body>
+</html>

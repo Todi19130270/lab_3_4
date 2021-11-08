@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #container{
+            width: 360px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -250px;
+            margin-left: -180px;
+        }
+        .inp{
+            width: 100%;
+            margin: 8px;
+            border-radius: 4px;
+            border: none;
+            box-shadow: #c0c1bd  0px 0px 12px 0px;
+            outline: none;
+
+        }
+        #txt_inp{
+            height: 40px;
+        }
+        .btn{
+            width: 100%;
+            margin: 8px;
+            height: 36px;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background: #1C8FF5;
+            transition: all 0.3s ease 0s;
+            text-transform: uppercase;
+        }
+        .btn:hover{
+            background-color: #8c42bd;
+            color: #fff;
+            box-shadow: 0px 15px 20px rgba(159, 116, 165, 0.4);
+        }
+        #noti{
+            margin: 8px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 360px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h5 id="noti"></h5>
+       <form id="check_Form">
+           <textarea name="txa" id="txta_inp" rows="7" class="inp" ></textarea>
+           <input type="text" name="txt" id="txt_inp" class="inp" >
+           <button type="button" class="btn" onclick="checkExist()">Check</button>
+       </form>
+
+    </div>
+
+    <script >
+        function checkExist() {
+            var txtaVal = document.getElementById('txta_inp').value;
+            var txtVal = document.getElementById("txt_inp").value;
+            if(txtaVal.trim().length == 0 && txtVal.trim().length == 0 ){
+                document.getElementById('noti').innerHTML = '';
+            }else if(txtaVal.trim().length == 0 || txtVal.trim().length == 0){
+                document.getElementById('noti').innerHTML = 'Vui lòng điền đầy đủ giá trị các ô !!';
+            }else{
+                document.getElementById('noti').innerHTML = 'Số lần "' + txtVal + '" xuất hiện trong "' + txtaVal + '" là: ' +  (txtaVal.split(txtVal).length-1);
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>

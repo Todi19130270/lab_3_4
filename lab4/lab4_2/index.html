@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quadratic</title>
+
+    <style>
+        #container{
+            margin-left: 102px;
+            margin-top: 64px;
+        }
+        h2{
+            margin-bottom: 32px;
+	    font-size: 34px;
+        }
+	#content{
+	    font-size: 20px;
+	}
+    </style>
+</head>
+<body>
+
+
+    <div id="container">
+        <h2 id="title"></h2>
+        <p id="content"></p>
+
+    </div>
+
+
+
+    <script >
+
+        function quadratic(a,b,c){
+            var operand = '+';
+            var operand2 = '+';
+            if(b<0){
+                operand = '';
+            }if(c<0){
+                operand2 = '';
+            }
+            document.getElementById("title").innerHTML ='Pt:  '+ a + 'x<sup>2</sup> ' + operand + b +'x ' + operand2 + c + ' = 0';
+            var result ='';
+            if(a === 0){
+                result = 'Pt suy biến';
+            }else
+                var delta = b * b - 4 * a * c;
+                if(delta < 0){
+                    result = 'Pt vô nghiệm';
+                }if(delta == 0){
+                    result = 'Pt có nghiệm kép: <br> ' +
+                        'x1 = x2 = ' + (-b/(2*a));
+                }if(delta > 0){
+                    result ='Pt có 2 nghiệm lần lượt là: <br><br>' +
+                        'x1 = ' + ((-b + Math.sqrt(delta))/(2*a)) + '.<br> ' +
+                        'x2 = ' + ((-b - Math.sqrt(delta))/(2*a)) + '.';
+            }
+        return result;
+
+        }
+
+
+        document.getElementById("content").innerHTML = quadratic(6,-10,-4);
+
+    </script>
+</body>
+</html>

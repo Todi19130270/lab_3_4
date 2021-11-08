@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #container{
+            top: 50%;
+            position: absolute;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -202px;
+        }
+        #img{
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="img" src="./img/red_square.svg">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        let posNow = 0;
+        setInterval(
+            function (){
+                posNow +=15;
+                document.querySelector('#img').style.transform = `rotate(${posNow}deg)`;
+            },2000 );
+
+    </script>
+
+</body>
+</html>

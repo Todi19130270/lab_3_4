@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Notification</title>
+</head>
+<body onload="showNoti()">
+
+
+<script >
+    function showNoti(){
+        var notis = ['hi','hello','xin chao','chao cac ban','Kon ni chi wa','Nǐ hǎo','Ciao','annyeonghasibnikka'];
+        var key = Math.floor(Math.random()*1000000)%notis.length;
+        alert(notis[key]);
+    }
+</script>
+</body>
+</html>
